@@ -4,7 +4,8 @@ const Footer = () => {
   return (
     <footer>
         <p>Powered by</p>
-        <img src="./img/DH.png" alt='DH-logo' />
+        {/* No es necesario indicar public porque desde que está ahí ya lo encuentra - Mi amor */}
+        <img src="/images/DH.png" alt='DH-logo' />
     </footer>
   )
 }
