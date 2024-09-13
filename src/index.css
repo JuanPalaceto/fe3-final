@@ -121,3 +121,12 @@ tr:nth-child(even) {
 .dark > a {
   color: white;
 }
+
+.light{
+  background-color: #fff;
+  color: #000;
+}
+
+.light > a {
+  color: blue;
+}

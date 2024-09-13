@@ -27,7 +27,7 @@ const Card = ({ dentist }) => {
         <Button>Details</Button>
       </Link> 
       {/* Ademas deberan integrar la logica para guardar cada Card en el localStorage */}
-      <Button onClick={addFav}>{isFav ? "🌟" : "⭐"}</Button>
+      <Button onClick={addFav} style={{fontSize: 1.2 + 'rem'}} >{isFav ? "★" : "☆"}</Button>
     </div>
   );
 };

@@ -21,7 +21,7 @@ const Detail = () => {
         setDentist(res.data);
         setTimeout(() => {
           setLoading(false);
-        }, 2000);
+        }, 1000);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -29,7 +29,7 @@ const Detail = () => {
   return (
     <>
       {loading ? (
-        "acá va el componente del spinner"
+        "cargando..."
       ) : (
         <>
           <h1>Detail Dentist </h1>

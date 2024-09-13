@@ -7,7 +7,7 @@ const ContextGlobal = createContext();
 const listFavs = JSON.parse(localStorage.getItem("favs")) || [];
 
 const initialState = {
-  theme: "",
+  theme: "light",
   data: [],
   favs: listFavs,
 };
