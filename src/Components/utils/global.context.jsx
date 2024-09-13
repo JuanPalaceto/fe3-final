@@ -1,37 +1,40 @@
 import axios from "axios";
 import { createContext, useContext, useEffect, useReducer } from "react";
+import { reducer } from "../../Reducers/reducer";
 
-export const initialState = { theme: "", data: [] }
+const ContextGlobal = createContext();
 
-export const ContextGlobal = createContext();
+const listFavs = JSON.parse(localStorage.getItem("favs")) || [];
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "GET_DATA":
-      return { ...state, data: action.payload };
-    default:
-      return state;
-  };
+const initialState = {
+  theme: "",
+  data: [],
+  favs: listFavs,
 };
 
-export const ContextProvider = ({ children }) => {
+const ContextProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const url = 'https://jsonplaceholder.typicode.com/users';
+  const url = "https://jsonplaceholder.typicode.com/users";
 
   useEffect(() => {
-    axios(url)
-      .then((res) => {
-        console.log(res.data);
-        dispatch({type: "GET_DATA", payload: res.data});
-      });
+    axios(url).then((res) => {
+      console.log(res.data);
+      dispatch({ type: "GET_DATA", payload: res.data });
+    });
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem("favs", JSON.stringify(state.favs));
+  }, [state.favs]);
+
   return (
-    <ContextGlobal.Provider value={{state, dispatch}}>
+    <ContextGlobal.Provider value={{ state, dispatch }}>
       {children}
     </ContextGlobal.Provider>
   );
 };
+
+export default ContextProvider;
 
 export const useContextGlobal = () => useContext(ContextGlobal);
