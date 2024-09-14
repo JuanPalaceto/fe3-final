@@ -1,4 +1,3 @@
-
 import { Route, Routes } from "react-router-dom";
 import { routes } from "./Components/utils/routes";
 import Home from "./Routes/Home";
@@ -10,7 +9,7 @@ import Layout from "./Layouts/Layout";
 
 function App() {
   return (
-    <div className="App">
+    <>
       <Routes>
       <Route path="/" element={<Layout />}>
         <Route path={routes.Home} element={<Home/>} />
@@ -20,7 +19,7 @@ function App() {
         <Route path={routes.NotFound} element={<h1>Error 404: Page Not Found</h1>} />
       </Route>
       </Routes>
-    </div>
+    </>
   );
 }
 

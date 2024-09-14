@@ -3,15 +3,13 @@ import { useEffect, useState } from "react";
 import Button from "../Components/Button";
 import axios from "axios";
 
-//Este componente debera ser estilado como "dark" o "light" dependiendo del theme del Context
-
 const Detail = () => {
   const navigate = useNavigate();
   const [dentist, setDentist] = useState({});
   const [loading, setLoading] = useState(true);
   const params = useParams();
   console.log(params);
-  // Consumiendo el parametro dinamico de la URL deberan hacer un fetch a un user en especifico
+
   const url = `https://jsonplaceholder.typicode.com/users/${params.id}`;
 
   useEffect(() => {
@@ -27,23 +25,31 @@ const Detail = () => {
   }, []);
 
   return (
-    <>
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 dark:bg-neutral-500 p-1">
+      <h1 className="text-2xl font-bold text-blue-900 dark:text-gray-900 mb-16">
+        Detail Dentist
+      </h1>
       {loading ? (
-        "cargando..."
+        <p className="text-center text-lg">Cargando...</p>
       ) : (
-        <>
-          <h1>Detail Dentist </h1>
-          <h2>{dentist.name}</h2>
-          <h4>{dentist.email}</h4>
-          <h4>{dentist.phone}</h4>
-          <h4>{dentist.website}</h4>
-        </>
+        <div className="text-center space-y-4">
+          <h2 className="text-xl font-semibold dark:text-white">
+            {dentist.name}
+          </h2>
+          <h4 className="text-lg dark:text-gray-300">{dentist.email}</h4>
+          <h4 className="text-lg dark:text-gray-300">{dentist.phone}</h4>
+          <h4 className="text-lg dark:text-gray-300">{dentist.website}</h4>
+        </div>
       )}
-      <Button onClick={() => navigate(-1)}>BACK</Button> {/* CAMBIAR BOTÓN*/}
-      
-      {/* aqui deberan renderizar la informacion en detalle de un user en especifico */}
-      {/* Deberan mostrar el name - email - phone - website por cada user en especifico */}
-    </>
+      <div className="text-center mt-6">
+        <Button
+          onClick={() => navigate(-1)}
+          className="text-3xl text-blue-900 dark:text-gray-900"
+        >
+          ←
+        </Button>
+      </div>
+    </div>
   );
 };
 

@@ -1,9 +1,13 @@
 const Button = (props) => {
-    return (
-      <button disabled={props.disabled} onClick={props.onClick} style={props.style} >
-        {props.children}
-      </button>
-    );
-  };
-  
-  export default Button;
+  return (
+    <button
+      disabled={props.disabled}
+      onClick={props.onClick}
+      className={props.className}
+    >
+      {props.children}
+    </button>
+  );
+};
+
+export default Button;
